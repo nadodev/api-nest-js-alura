@@ -18,6 +18,23 @@ let usuarioRepository = class usuarioRepository {
     async findAll() {
         return this.users;
     }
+    async emailUnique(email) {
+        const emailExists = this.users.find((u) => u.email === email);
+        return emailExists !== undefined;
+    }
+    async updateUser(id, user) {
+        const userIndex = this.users.findIndex((u) => u.id === id);
+        if (userIndex === -1) {
+            return false;
+        }
+        Object.entries(user).forEach(([key, value]) => {
+            if (key === 'id') {
+                return;
+            }
+            this.users[userIndex][key] = value;
+        });
+        return this.users[userIndex];
+    }
 };
 usuarioRepository = __decorate([
     (0, common_1.Injectable)()
