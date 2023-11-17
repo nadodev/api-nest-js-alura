@@ -5,4 +5,6 @@ export declare class usuarioRepository {
     findAll(): Promise<UsuarioEntity[]>;
     emailUnique(email: string): Promise<boolean>;
     updateUser(id: string, user: Partial<UsuarioEntity>): Promise<false | UsuarioEntity>;
+    deleteUser(id: string): Promise<false | UsuarioEntity>;
+    private searchUserIndex;
 }

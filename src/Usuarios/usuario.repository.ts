@@ -20,19 +20,33 @@ export class usuarioRepository {
   }
 
   async updateUser(id: string, user: Partial<UsuarioEntity>) {
-    const userIndex = this.users.findIndex((u) => u.id === id);
-
-    if (userIndex === -1) {
-      return false;
-    }
+    const userIndex = this.searchUserIndex(id);
 
     Object.entries(user).forEach(([key, value]) => {
       if (key === 'id') {
         return;
       }
-      this.users[userIndex][key] = value;
+      userIndex[key] = value;
     });
 
-    return this.users[userIndex];
+    return userIndex;
+  }
+
+  async deleteUser(id: string) {
+    const user = this.searchUserIndex(id);
+
+    this.users = this.users.filter((usuario) => usuario.id !== id);
+
+    return  user
+  }
+
+  private searchUserIndex(id: string) {
+    const userIndex = this.users.find((usuario) => usuario.id === id);
+
+    if (!userIndex) {
+      return false;
+    }
+
+    return userIndex;
   }
 }

@@ -18,4 +18,8 @@ export declare class UsuarioController {
         messagem: string;
         usuario: UsuarioEntity;
     }>;
+    deletarUsuario(id: string): Promise<{
+        messagem: string;
+        usuario: boolean | UsuarioEntity;
+    }>;
 }

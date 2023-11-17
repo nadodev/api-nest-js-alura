@@ -23,17 +23,26 @@ let usuarioRepository = class usuarioRepository {
         return emailExists !== undefined;
     }
     async updateUser(id, user) {
-        const userIndex = this.users.findIndex((u) => u.id === id);
-        if (userIndex === -1) {
-            return false;
-        }
+        const userIndex = this.searchUserIndex(id);
         Object.entries(user).forEach(([key, value]) => {
             if (key === 'id') {
                 return;
             }
-            this.users[userIndex][key] = value;
+            userIndex[key] = value;
         });
-        return this.users[userIndex];
+        return userIndex;
+    }
+    async deleteUser(id) {
+        const user = this.searchUserIndex(id);
+        this.users = this.users.filter((usuario) => usuario.id !== id);
+        return user;
+    }
+    searchUserIndex(id) {
+        const userIndex = this.users.find((usuario) => usuario.id === id);
+        if (!userIndex) {
+            return false;
+        }
+        return userIndex;
     }
 };
 usuarioRepository = __decorate([

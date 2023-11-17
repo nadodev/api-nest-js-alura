@@ -53,6 +53,13 @@ let UsuarioController = class UsuarioController {
             usuario: user,
         };
     }
+    async deletarUsuario(id) {
+        const user = await this.usuarioRepository.deleteUser(id);
+        return {
+            messagem: 'Usuário deletado com sucesso',
+            usuario: user,
+        };
+    }
 };
 __decorate([
     (0, common_1.Post)(),
@@ -75,6 +82,13 @@ __decorate([
     __metadata("design:paramtypes", [String, atualiza_usuario_dto_1.AtualizaUsuarioDTO]),
     __metadata("design:returntype", Promise)
 ], UsuarioController.prototype, "atualizarUsuario", null);
+__decorate([
+    (0, common_1.Delete)('/deletar/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], UsuarioController.prototype, "deletarUsuario", null);
 UsuarioController = __decorate([
     (0, common_1.Controller)('/usuario'),
     __metadata("design:paramtypes", [usuario_repository_1.usuarioRepository])
