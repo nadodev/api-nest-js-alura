@@ -15,7 +15,7 @@ import { AtualizaUsuarioDTO } from './dto/atualiza-usuario.dto';
 import { usuarioEntity as UsuarioEntity } from './usuarioEntity';
 
 @Controller('/usuario')
-export class usuarioController {
+export class UsuarioController {
   constructor(private usuarioRepository: usuarioRepository) {}
 
   @Post()
