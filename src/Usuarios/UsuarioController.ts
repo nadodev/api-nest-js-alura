@@ -9,10 +9,10 @@ import {
 } from '@nestjs/common';
 import { usuarioRepository } from './usuarioRepository';
 import { CreateUserDTO } from './dto/create-user.dto';
-import { UsuarioEntity } from './usuarioEntity';
 import { v4 as uuid } from 'uuid';
 import { listaUsuarioDTO } from './dto/listaUsuarioDTO';
 import { AtualizaUsuarioDTO } from './dto/atualiza-usuario.dto';
+import { usuarioEntity as UsuarioEntity } from './UsuarioEntity';
 
 @Controller('/usuario')
 export class usuarioController {
