@@ -1,12 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { CreateUserDTO } from './dto/create-user.dto';
-import { UsuarioEntity } from './UsuarioEntity';
+import {usuarioEntity } from './usuarioEntity';
 
 @Injectable()
 export class usuarioRepository {
-  private users: UsuarioEntity[] = [];
+  private users: usuarioEntity[] = [];
 
-  async save(user: UsuarioEntity) {
+  async save(user: usuarioEntity) {
     this.users.push(user);
   }
 
@@ -19,7 +18,7 @@ export class usuarioRepository {
     return emailExists !== undefined;
   }
 
-  async updateUser(id: string, user: Partial<UsuarioEntity>) {
+  async updateUser(id: string, user: Partial<usuarioEntity>) {
     const userIndex = this.searchUserIndex(id);
 
     Object.entries(user).forEach(([key, value]) => {

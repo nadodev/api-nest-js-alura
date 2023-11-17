@@ -12,7 +12,7 @@ import { CreateUserDTO } from './dto/create-user.dto';
 import { v4 as uuid } from 'uuid';
 import { listaUsuarioDTO } from './dto/listaUsuarioDTO';
 import { AtualizaUsuarioDTO } from './dto/atualiza-usuario.dto';
-import { usuarioEntity as UsuarioEntity } from './UsuarioEntity';
+import { usuarioEntity as UsuarioEntity } from './usuarioEntity';
 
 @Controller('/usuario')
 export class usuarioController {

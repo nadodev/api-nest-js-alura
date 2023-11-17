@@ -1,5 +1,4 @@
 import { IsEmail, MinLength, IsOptional } from 'class-validator';
-import { EmailUnique } from '../validation/email-unique.validator';
 
 export class AtualizaUsuarioDTO {
   @IsOptional()

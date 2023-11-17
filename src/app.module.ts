@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { UsuarioModule } from './Usuarios/usuario.module';
+import { UsuarioModule } from './Usuarios/UsuarioModule';
 import { DbConfigService } from './config/db.config.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
