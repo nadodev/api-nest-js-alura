@@ -1,3 +1,3 @@
-export class ListaUsuarioDTO {
+export class listaUsuarioDTO {
   constructor(readonly name: string, readonly id: string) {}
 }

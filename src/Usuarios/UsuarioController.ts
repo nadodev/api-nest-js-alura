@@ -7,15 +7,15 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { usuarioRepository } from './usuario.repository';
+import { usuarioRepository } from './usuarioRepository';
 import { CreateUserDTO } from './dto/create-user.dto';
-import { UsuarioEntity } from './usuario.entity';
+import { UsuarioEntity } from './usuarioEntity';
 import { v4 as uuid } from 'uuid';
-import { ListaUsuarioDTO } from './dto/lista-usuario.dto';
+import { listaUsuarioDTO } from './dto/listaUsuarioDTO';
 import { AtualizaUsuarioDTO } from './dto/atualiza-usuario.dto';
 
 @Controller('/usuario')
-export class UsuarioController {
+export class usuarioController {
   constructor(private usuarioRepository: usuarioRepository) {}
 
   @Post()
@@ -30,7 +30,7 @@ export class UsuarioController {
 
     return {
       message: 'Usuário criado com sucesso',
-      usuario: new ListaUsuarioDTO(usuarioEntity.name, usuarioEntity.id),
+      usuario: new listaUsuarioDTO(usuarioEntity.name, usuarioEntity.id),
     };
   }
 
@@ -39,7 +39,7 @@ export class UsuarioController {
     const users = await this.usuarioRepository.findAll();
 
     const usersDTO = users.map(
-      (user) => new ListaUsuarioDTO(user.name, user.id),
+      (user) => new listaUsuarioDTO(user.name, user.id),
     );
     return usersDTO;
   }
